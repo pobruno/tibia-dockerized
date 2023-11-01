@@ -118,10 +118,10 @@ sed -i "s/^mysqlPass\s=\s.*\"$/mysqlPass = \"$DATABASE_PASSWORD\"/g" server/conf
 sed -i "s/^mysqlDatabase\s=\s.*\"$/mysqlDatabase = \"$DATABASE_NAME\"/g" server/config.lua.dist
 sed -i "s/^ip\s=\s.*\"$/ip = \"$DOCKER_NETWORK_GATEWAY\"/g" server/config.lua.dist
 sed -i "s/^serverMotd\s=\s.*\"$/serverMotd = \"$SERVER_MOTD\"/g" server/config.lua.dist
-sed -i "s/^mapName\s=\s.*\"$/mapName = \"$SERVER_MAP_NAME\"/g" server/config.lua.dist
-sed -i "s/^ownerName\s=\s.*\"$/ownerName = \"$OWNER_NAME\"/g" server/config.lua.dist
-sed -i "s/^serverMotd\s=\s.*\"$/ownerEmail = \"$OWNER_EMAIL\"/g" server/config.lua.dist
-sed -i "s/^location\s=\s.*\"$/location = \"$LOCATION\"/g" server/config.lua.dist
+##sed -i "s/^mapName\s=\s.*\"$/mapName = \"$SERVER_MAP_NAME\"/g" server/config.lua.dist
+#sed -i "s/^ownerName\s=\s.*\"$/ownerName = \"$OWNER_NAME\"/g" server/config.lua.dist
+#sed -i "s/^ownerEmail\s=\s.*\"$/ownerEmail = \"$OWNER_EMAIL\"/g" server/config.lua.dist
+#sed -i "s/^location\s=\s.*\"$/location = \"$LOCATION\"/g" server/config.lua.dist
 
 # substituindo valores no arquivo login.php
 sed -i "s/^\$databaseURL\s.*=\s.*;$/\$databaseURL = \"$DOCKER_NETWORK_GATEWAY\";/g" site/login.php
