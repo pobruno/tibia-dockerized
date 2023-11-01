@@ -33,7 +33,7 @@ do
     if [[ "$1" == "-d" ]] || [[ "$1" == "--download" ]] && [ $download == false ]; then
         printf "[INFO] iniciando download do servidor! \n"
 
-        download_url=https://github.com/opentibiabr/canary/archive/refs/tags/v3.0.0.zip
+        download_url=https://github.com/opentibiabr/canary/releases/download/v2.6.1/canary-v2.6.1-ubuntu-22.04-executable+server.zip
         sudo wget --show-progress -O server/tibia-canary.zip $download_url
 
         # verifica a saída do comando anterior
@@ -49,11 +49,10 @@ do
         # remove o arquivo zip
         # altera as permissões do arquivo 'canary' para que seja possível executa-lo
         sudo unzip -o server/tibia-canary.zip -d server/ &> /dev/null
-        sudo mv server/canary-3.0.0/* server/ 
-        rmdir server/canary-3.0.0
+        #sudo mv server/canary-3.0.0/* server/ 
+        #rmdir server/canary-3.0.0
         sudo rm -r server/tibia-canary.zip
-        sudo chmod +x server/canary.rc
-        sudo chmod +x ./canary-3.0.0
+        sudo chmod +x server/canary
         echo "[INFO] download concluído e extraído em 'otserver/server/'!"
         download=true
     fi
