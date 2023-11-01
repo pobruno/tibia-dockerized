@@ -1,13 +1,20 @@
 #!/bin/bash
 
-export SERVER_NAME=MongaBR
+export SERVER_NAME=MongaServer
 
-export DATABASE_NAME=mongadb
-export DATABASE_USER=otserv
+export DATABASE_NAME=otservdb
+export DATABASE_USER=monga
 export DATABASE_PASSWORD=noob
 
 export DOCKER_NETWORK_GATEWAY=192.168.128.1
 export DOCKER_NETWORK_CIDR=192.168.128.0/20
+
+export SERVER_MOTD="Seja bem vinda a Monga Tibia BR!"
+export SERVER_MAP_NAME="Santa-Catarina"
+export OWNER_NAME="MongaTech"
+export OWNER_EMAIL="contato@monga.dev.br"
+export URL_SITE="www.wiki.monga.dev.br"
+export LOCATION="Brasil"
 
 ################################
 #### como executar o script ####
