@@ -33,8 +33,8 @@ do
     if [[ "$1" == "-d" ]] || [[ "$1" == "--download" ]] && [ $download == false ]; then
         printf "[INFO] iniciando download do servidor! \n"
 
-        download_url=https://github.com/opentibiabr/canary/releases/download/v2.6.1/canary-v2.6.1-ubuntu-22.04-executable+server.zip
-        wget --show-progress -P server/ $download_url
+        download_url=https://github.com/opentibiabr/canary/archive/refs/tags/v3.0.0.zip
+        sudo wget --show-progress -O server/tibia-canary.zip $download_url
 
         # verifica a saída do comando anterior
         # se a saída for diferente de 0 significa que ocorreu um erro
@@ -48,9 +48,12 @@ do
         # descompacta os arquivos do servidor na pasta 'server/'
         # remove o arquivo zip
         # altera as permissões do arquivo 'canary' para que seja possível executa-lo
-        unzip -o -d server/ server/canary-v2.6.1-ubuntu-22.04-executable+server.zip &> /dev/null
-        rm -r server/canary-v2.6.1-ubuntu-22.04-executable+server.zip
-        chmod +x server/canary
+        sudo unzip -o server/tibia-canary.zip -d server/ &> /dev/null
+        sudo mv server/canary-3.0.0/* server/ 
+        rmdir server/canary-3.0.0
+        sudo rm -r server/tibia-canary.zip
+        sudo chmod +x server/canary.rc
+        sudo chmod +x ./canary-3.0.0
         echo "[INFO] download concluído e extraído em 'otserver/server/'!"
         download=true
     fi
@@ -108,6 +111,16 @@ sed -i "s/^mysqlUser\s=\s.*\"$/mysqlUser = \"$DATABASE_USER\"/g" server/config.l
 sed -i "s/^mysqlPass\s=\s.*\"$/mysqlPass = \"$DATABASE_PASSWORD\"/g" server/config.lua.dist
 sed -i "s/^mysqlDatabase\s=\s.*\"$/mysqlDatabase = \"$DATABASE_NAME\"/g" server/config.lua.dist
 sed -i "s/^ip\s=\s.*\"$/ip = \"$DOCKER_NETWORK_GATEWAY\"/g" server/config.lua.dist
+sed -i "s/^serverMotd\s=\s.*\"$/serverMotd = \"$SERVER_MOTD\"/g" server/config.lua.dist
+sed -i "s/^mapName\s=\s.*\"$/mapName = \"$SERVER_MAP_NAME\"/g" server/config.lua.dist
+sed -i "s/^ownerName\s=\s.*\"$/ownerName = \"$OWNER_NAME\"/g" server/config.lua.dist
+sed -i "s/^serverMotd\s=\s.*\"$/ownerEmail = \"$OWNER_EMAIL\"/g" server/config.lua.dist
+
+
+sed -i "s/^location\s=\s.*\"$/location = \"$LOCATION\"/g" server/config.lua.dist
+
+sed -i "s/^serverMotd\s=\s.*\"$/serverMotd = \"$SERVER_MOTD\"/g" server/config.lua.dist
+
 
 # substituindo valores no arquivo login.php
 sed -i "s/^\$databaseURL\s.*=\s.*;$/\$databaseURL = \"$DOCKER_NETWORK_GATEWAY\";/g" site/login.php
