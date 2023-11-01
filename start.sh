@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export SERVER_NAME=MongaTibia
+export SERVER_NAME=MongaBR
 
-export DATABASE_NAME=otservdb
+export DATABASE_NAME=mongadb
 export DATABASE_USER=otserv
 export DATABASE_PASSWORD=noob
 
