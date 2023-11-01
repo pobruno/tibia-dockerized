@@ -115,12 +115,7 @@ sed -i "s/^serverMotd\s=\s.*\"$/serverMotd = \"$SERVER_MOTD\"/g" server/config.l
 sed -i "s/^mapName\s=\s.*\"$/mapName = \"$SERVER_MAP_NAME\"/g" server/config.lua.dist
 sed -i "s/^ownerName\s=\s.*\"$/ownerName = \"$OWNER_NAME\"/g" server/config.lua.dist
 sed -i "s/^serverMotd\s=\s.*\"$/ownerEmail = \"$OWNER_EMAIL\"/g" server/config.lua.dist
-
-
 sed -i "s/^location\s=\s.*\"$/location = \"$LOCATION\"/g" server/config.lua.dist
-
-sed -i "s/^serverMotd\s=\s.*\"$/serverMotd = \"$SERVER_MOTD\"/g" server/config.lua.dist
-
 
 # substituindo valores no arquivo login.php
 sed -i "s/^\$databaseURL\s.*=\s.*;$/\$databaseURL = \"$DOCKER_NETWORK_GATEWAY\";/g" site/login.php
